@@ -82,3 +82,42 @@
     cursor: pointer;
 }
 /*Menu Styles*/
+
+/*Footer*/
+#footerContacts{
+    display: flex;
+    position: relative;
+}
+
+#footerContainer {
+    display: flex; 
+    background-color: #007A8D;
+    align-self: center;
+    align-content: center;
+}
+
+#footer #footerContainer #footerItem{
+    display: flex; 
+    flex: 1;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    padding: 10px;
+    color: aliceblue;
+}
+
+#footer #footerContainer #footerItem #footerContactImg {
+    justify-content: flex-start;
+    align-self: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+#footerContainerEnd {
+    background-color: #18ACC4;
+    color: aliceblue;
+    text-align: center;
+    padding: 20px;
+}
+ 
+/*Footer*/
