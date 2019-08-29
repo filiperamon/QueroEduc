@@ -1,0 +1,84 @@
+/*Status Styles*/
+#statusBar {
+    display: flex;
+    position: relative;
+    color: #007A8D;
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 100px;
+}
+
+#statusBar #statusContainer {
+    flex: 1;
+    padding: 15px;
+    align-self: center;
+}
+
+#statusBar #statusContainer #statsHelp{
+    display: flex; 
+    align-self: center;
+}
+
+#statusBar #statusContainer #statsHelp #statusHelpUnion{
+    justify-content: flex-start;
+    align-self: center;
+}
+
+#statusBar #statusDivision {
+    padding: 1px;
+    font-size: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: rgb(228, 228, 228);
+}
+
+#statusBar #statusContainer #statsHelp #statsContactImg{
+    flex-direction: row;
+    justify-content: flex-start;
+    align-self: center;
+    margin-right: 10px;
+}
+
+#statusBar #statusContainer #statsHelp #statsContactNumber{
+    flex-direction: column;
+    align-self: center;
+}
+
+#statusBar #statusContainer #statusUser{
+    display: flex;
+}
+
+#statusBar #statusContainer #statusUser #statusUserName{
+    margin-right: 20px;
+}
+/*Status Styles*/
+
+/*Menu Styles*/
+
+#menu {
+    background-color: #18ACC4;
+}
+
+#menuContainer{
+    display: flex;
+    position: relative;
+    margin: 0px;
+    margin-left: 100px;
+}
+
+#menuItem {
+    text-align: center;
+    color: aliceblue;
+    font-size: 15px;
+    margin: 0px;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    transition: all .5s ease;
+}
+
+#menu #menuItem:hover {
+    background-color: #007A8D;
+    cursor: pointer;
+}
+/*Menu Styles*/
