@@ -1,3 +1,7 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 /*Status Styles*/
 #statusBar {
     display: flex;
@@ -10,7 +14,9 @@
 
 #statusBar #statusContainer {
     flex: 1;
-    padding: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 15px;
     align-self: center;
 }
 
@@ -72,7 +78,7 @@
     font-size: 15px;
     margin: 0px;
     padding: 10px;
-    padding-left: 30px;
+    padding-left: 15px;
     padding-right: 30px;
     transition: all .5s ease;
 }
@@ -149,9 +155,7 @@
 }
 
 #homeAddItem img {
-    align-items: center;
     align-self: center;
-    align-content: center;
 }
 
 #homeAddItem {
@@ -211,6 +215,21 @@
     background-color: #007A8D;
     color: rgb(255, 255, 255);
     cursor: pointer;
+}
+
+#rota {
+    padding-top: 20px;
+    padding-block: 20px;
+    margin-left: 100px;
+    color: #007A8D;
+}
+
+#homeFavoritas{
+    margin-left: 100px;
+}
+
+#homeFavoritas h4{
+    color: rgb(78, 78, 78);
 }
 
 /*Home*/
