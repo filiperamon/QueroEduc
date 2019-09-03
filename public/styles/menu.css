@@ -1,0 +1,29 @@
+/*Menu Styles*/
+
+#menu {
+    background-color: #18ACC4;
+}
+
+#menuContainer{
+    display: flex;
+    position: relative;
+    margin: 0px;
+    margin-left: 100px;
+}
+
+#menuItem {
+    text-align: center;
+    color: aliceblue;
+    font-size: 15px;
+    margin: 0px;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 30px;
+    transition: all .5s ease;
+}
+
+#menu #menuItem:hover {
+    background-color: #007A8D;
+    cursor: pointer;
+}
+/*Menu Styles*/

@@ -1,6 +1,7 @@
 const express    = require('express')
 const bodyParser = require('body-parser')
 const path       = require('path')
+const axios      = require('axios')
 
 const app  = express()
 
@@ -17,8 +18,39 @@ app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname, 'public'))) 
 app.use(bodyParser.urlencoded({ extended: true }))
 
+const urlUniversitys = 'https://testapi.io/api/redealumni/scholarships'
+let listUniveritys = {}
+let listCity = {}
+let listCursos = {}
+
+const init = () => {
+    
+    axios.get(urlUniversitys).then( res => {
+        
+        listUniveritys = res.data
+
+        listCursos = listUniveritys
+                    .map( uni => uni.course)
+                    
+        listCity = listUniveritys
+                    .map( uni => uni.campus )
+                    /*.filter(( el, i, citys ) => {
+                        citys.findIndex( item => item["city"] === el["city"] ) === i 
+                    })*/
+      
+        console.log(listUniveritys)
+    })
+}
+
+init()
+
 app.get('/', (req, res) => {
-    res.render('home')
+    console.log(listUniveritys)
+    res.render('home', {
+        listUniveritys
+        ,listCity
+        ,listCursos
+    })
 })
 
 //Add port and start server
