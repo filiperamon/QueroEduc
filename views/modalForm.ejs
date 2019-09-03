@@ -4,15 +4,15 @@
         <span onclick="closeModal()" class="close">&times;</span>
         <h2 >Adicionar bolsa</h2>
         <h4>dades do seu interesse e receba atualizaçõe </h4>
-        <form action="">
+        <form method="POST">
             <div id="formContent">
                 <div id="formContentLine">
                     <div id="formContentLineElements">
                         SELECIONE SUA CIDADE
                         <div>
-                            <select id="customSelect" aria-placeholder="CIDADE">
-                                <% listCity.forEach( city => { %>
-                                    <option><%- city.city %></option>
+                            <select id="customSelect" aria-placeholder="CIDADE" name="cidade">
+                                <% objForm.listCity.forEach( city => { %>
+                                    <option name="cidade" value="<%= city %>"><%- city %></option>
                                 <% }) %>
                             </select>
                         </div>
@@ -20,9 +20,9 @@
                     <div id="formContentLineElements">
                         SELECIONE O CURSO DE SUA PREFERÊNCIA
                         <div>
-                            <select id="customSelect" aria-placeholder="CURSO">
-                                <% listCursos.forEach( c => { %>
-                                    <option><%- c.name %></option>
+                            <select id="customSelect" aria-placeholder="CURSO" name="curso" >
+                                <% objForm.listCourses.forEach( c => { %>
+                                    <option name="curso" value="<%= c.name %>"><%- c.name %></option>
                                 <% }) %>
                             </select>
                         </div>
@@ -33,17 +33,17 @@
                         COMO VOCÊ QUER ESTUDAR?
                         <div id="customCheckBox">
                             <label>
-                                <input type="checkbox"> Presencial
+                                <input type="checkbox" id="checkPresencial" name="checkPresencial"  > Presencial
                             </label>
                             <label>
-                                <input type="checkbox"> A distancia
+                                <input type="checkbox" id="checkEAD" name="checkEAD"> A Distancia
                             </label>
                         </div>
                     </div>
                     <div id="formContentLineElements">
                         ATÉ QUANTO PODE PAGAR?
-                        <p>R$ <span id="valorPreco"></span></p> 
-                        <input type="range" min="1000" max="10000" value="5000" class="slider" id="myRange">
+                        <p>R$ <span id="valorPreco" name="valorPreco"></span></p> 
+                        <input type="range" min="1000" max="10000" name="valorPreco" value="5000" class="slider" id="myRange">
                     </div>
                 </div>
                 <div id="formContentLine">
@@ -52,18 +52,18 @@
                 </div>
                 <div id="lineDivision"></div>
 
-                <% listUniveritys.forEach( uni => { %>
-
+                <% objForm.listUniveritys.forEach( uni => { %>
+                    
                 <div id="listFaculdades">
                         <div id="checkFaculdade">
-                        <input type="checkbox">
+                            <input type="checkbox" name="courseSelected" id="courseSelected"  value="<%= uni %>" onchange="cursoSelecionado()">
                         </div>
                         
                         <div id="logoFaculdade"><img src="<%- uni.university.logo_url %>"></div>
                         
                         <div id="nameAndLevel">
                             <div id="nameCourseName">
-                                <label>
+                                <label >
                                     <%- uni.course.name %>
                                 </label>
                             </div>
@@ -74,7 +74,7 @@
                             </div>
                         </div>
                         
-                        <div>
+                        <div id="priceAndDiscont">
                                 <div id="valorDisconto">
                                     Bolsa de 
                                     <label id="labelDesconto"><%- uni.discount_percentage %>%</div></label>
@@ -91,9 +91,11 @@
                 <div id="lineDivision"></div>
                 <% }) %>
 
+                <input type="hidden" id="nameCourseName">
+
                 <footer id="footerForm">
-                    <label id="btnCancelar">Cancelar</label>
-                    <label id="btnAddBolsa">Adicionar Bolsa(s)</label>
+                    <input type="submit" id="btnCancelar" value="Cancelar"></input >
+                    <input type="submit" id="btnAddBolsa" value="Adicionar Bolsa(s)" disabled></input >
                 </footer>
             </div>
         </form>
@@ -106,7 +108,18 @@
                 
             rangeslider.oninput = function() { 
                 output.innerHTML = parseFloat(this.value).toFixed(2); 
-            } 
+            }
+            
+            function cursoSelecionado() {
+                let items = document.getElementsByName('courseSelected');
+                document.getElementById('btnAddBolsa').disabled = true
+
+				for(let i=0; i < items.length; i++){
+					if(items[i].type =='checkbox' && items[i].checked == true){
+                        document.getElementById('btnAddBolsa').disabled = false;
+                    }
+				}
+            }
         </script> 
 
   </div>

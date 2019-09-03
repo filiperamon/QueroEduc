@@ -19,37 +19,46 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 const urlUniversitys = 'https://testapi.io/api/redealumni/scholarships'
-let listUniveritys = {}
-let listCity = {}
-let listCursos = {}
+let objForm = {
+     listUniveritys: {}
+    ,listCity: {}
+    ,listCourses: {}
+    ,listCoursesSelected: {}
+}
 
 const init = () => {
     
-    axios.get(urlUniversitys).then( res => {
+    axios.get(urlUniversitys)
+    .then( res => {
+        objForm.listUniveritys  = res.data.filter( uni => uni.enabled ).sort();
         
-        listUniveritys = res.data
-
-        listCursos = listUniveritys
-                    .map( uni => uni.course)
-                    
-        listCity = listUniveritys
-                    .map( uni => uni.campus )
-                    /*.filter(( el, i, citys ) => {
-                        citys.findIndex( item => item["city"] === el["city"] ) === i 
-                    })*/
-      
-        console.log(listUniveritys)
+        objForm.listCourses = objForm.listUniveritys.map( uni => uni.course )
+                                                    .filter(function (a) {
+                                                        return !this[JSON.stringify(a)] && (this[JSON.stringify(a)] = true);
+                                                    }, Object.create(null)).sort();
+        
+        objForm.listCity = objForm.listUniveritys.map( uni => uni.campus.city )
+                                                .filter(function (a) {
+                                                    return !this[JSON.stringify(a)] && (this[JSON.stringify(a)] = true);
+                                                }, Object.create(null)).sort();
     })
-}
+}   
 
 init()
 
 app.get('/', (req, res) => {
-    console.log(listUniveritys)
     res.render('home', {
-        listUniveritys
-        ,listCity
-        ,listCursos
+        objForm
+    })
+})
+
+app.post('/', (req, res) => {
+    
+    console.log(req.body)
+    //console.log(Object.values(req.body.courseSelected))
+
+    res.render('home', {
+        objForm
     })
 })
 

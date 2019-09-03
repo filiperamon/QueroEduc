@@ -1,5 +1,7 @@
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #FBFBFB;
+    color: #1F2D30;
 }
 
 /* The Modal (background) */
@@ -13,7 +15,7 @@ body {
     width: 100%; /* Full width */
     height: 90%; /* Full height */
     overflow: scroll;
-    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: #1F2D30; /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
   
@@ -36,7 +38,7 @@ body {
   
   .close:hover,
   .close:focus {
-    color: #000;
+    color: #1F2D30;
     text-decoration: none;
     cursor: pointer;
   }
@@ -128,9 +130,10 @@ body {
     padding: 8px;
     border-radius: 3px;
     margin: 7px;
+    text-align: center;
 }
 
-#btnCancelar:hover ,#btnAddBolsa:hover{
+#btnCancelar:hover {
     background-color: rgb(201, 239, 245);
     cursor: pointer;
 }
@@ -192,4 +195,17 @@ body {
 
 #labelDesconto, #valorFaculdade {
     color: #0FA866;
+}
+
+#btnAddBolsa {
+    background-color: #FDCB13 ; 
+}
+
+#btnAddBolsa:hover {
+    background-color: #DE9E1F;
+    cursor: pointer; 
+}
+
+#btnAddBolsa.disabled { 
+    background-color: #FBFBFB; 
 }
