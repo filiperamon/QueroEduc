@@ -29,15 +29,20 @@
 }
 
 #footerContainerEnd {
+    display: flex;
+    flex-direction: row;
     background-color: #18ACC4;
     color: aliceblue;
     text-align: center;
     align-self: center;
     padding: 50px;
+    justify-content: center;
 }
+
 #footerContainerEnd img {
     text-align: initial;
     align-self: baseline;
+    justify-content: center;
 }
  
 /*Footer*/

@@ -10,7 +10,7 @@
                     <div id="formContentLineElements">
                         SELECIONE SUA CIDADE
                         <div>
-                            <select id="customSelect" aria-placeholder="CIDADE" name="cidade">
+                            <select id="customSelect" aria-placeholder="CIDADE" name="cidade" onchange="cidadeSelecionada()">
                                 <% objForm.listCity.forEach( city => { %>
                                     <option name="cidade" value="<%= city %>"><%- city %></option>
                                 <% }) %>
@@ -52,44 +52,49 @@
                 </div>
                 <div id="lineDivision"></div>
 
-                <% objForm.listUniveritys.forEach( uni => { %>
-                    
-                <div id="listFaculdades">
-                        <div id="checkFaculdade">
-                            <input type="checkbox" name="courseSelected" id="courseSelected"  value="<%= uni %>" onchange="cursoSelecionado()">
-                        </div>
-                        
-                        <div id="logoFaculdade"><img src="<%- uni.university.logo_url %>"></div>
-                        
-                        <div id="nameAndLevel">
-                            <div id="nameCourseName">
-                                <label >
-                                    <%- uni.course.name %>
-                                </label>
-                            </div>
-                            <div id="nameCourseLevel">
-                                <label>
-                                    <%- uni.course.level %>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div id="priceAndDiscont">
-                                <div id="valorDisconto">
-                                    Bolsa de 
-                                    <label id="labelDesconto"><%- uni.discount_percentage %>%</div></label>
-                                <div id="valorFaculdade">
-                                    <label>
-                                        R$ 
-                                        <%- uni.price_with_discount %>
-                                        /mês
-                                    </label>
+                <% for(let i = 0; i < objForm.listUniveritys.length; i++ ) { %>
+
+                    <!--<% if (objForm.listUniveritys[i].course.name === 'Engenharia Mecânica') { %>
+                        <h2><%= objForm.listUniveritys[i].course.name %></h2>
+                    <% } %>-->
+
+                        <div id="listFaculdades">
+                                <div id="checkFaculdade">
+                                    <input type="checkbox" name="courseSelected" id="courseSelected"  value="<%= i %>" onchange="cursoSelecionado()">
                                 </div>
+                                
+                                <div id="logoFaculdade"><img src="<%- objForm.listUniveritys[i].university.logo_url %>"></div>
+                                
+                                <div id="nameAndLevel">
+                                    <div id="nameCourseName">
+                                        <label >
+                                            <%- objForm.listUniveritys[i].course.name %>
+                                        </label>
+                                    </div>
+                                    <div id="nameCourseLevel">
+                                        <label>
+                                            <%- objForm.listUniveritys[i].course.level %>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div id="priceAndDiscont">
+                                        <div id="valorDisconto">
+                                            Bolsa de 
+                                            <label id="labelDesconto"><%- objForm.listUniveritys[i].discount_percentage %>%</div></label>
+                                        <div id="valorFaculdade">
+                                            <label>
+                                                R$ 
+                                                <%- objForm.listUniveritys[i].price_with_discount %>
+                                                /mês
+                                            </label>
+                                        </div>
+                                </div>
+                                
                         </div>
-                        
-                </div>
-                <div id="lineDivision"></div>
-                <% }) %>
+                        <div id="lineDivision"></div>
+                    
+                <% } %>
 
                 <input type="hidden" id="nameCourseName">
 
@@ -109,16 +114,35 @@
             rangeslider.oninput = function() { 
                 output.innerHTML = parseFloat(this.value).toFixed(2); 
             }
+
+            function cidadeSelecionada() {
+                //Var pois ele da o hipping no escopo
+                var cidadeSelecionada = document.getElementByName('cidade').value
+            }
             
             function cursoSelecionado() {
                 let items = document.getElementsByName('courseSelected');
                 document.getElementById('btnAddBolsa').disabled = true
+                let count = 0;
 
 				for(let i=0; i < items.length; i++){
-					if(items[i].type =='checkbox' && items[i].checked == true){
+					
+                    console.log('item', items[i])
+
+                    if(items[i].type =='checkbox' && items[i].checked == true){
+                        if(count > 3) {
+                            items[i].checked = false;
+                        } else {
+                            count ++;
+                        }
+
                         document.getElementById('btnAddBolsa').disabled = false;
                     }
-				}
+                }
+                
+                if(count > 3) {
+                    alert('Selecione no máximo 3 cursos!');
+                }
             }
         </script> 
 

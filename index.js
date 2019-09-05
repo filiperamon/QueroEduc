@@ -23,7 +23,7 @@ let objForm = {
      listUniveritys: {}
     ,listCity: {}
     ,listCourses: {}
-    ,listCoursesSelected: {}
+    ,listCoursesSelected: []
 }
 
 const init = () => {
@@ -53,9 +53,18 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
+
+    if(objForm.listCoursesSelected.length < 3) { 
+        if( req.body.courseSelected.length === 1){
+            objForm.listCoursesSelected.push(objForm.listUniveritys[ req.body.courseSelected ])
+        } else {
+            req.body.courseSelected.map( item => {
+                objForm.listCoursesSelected.push(objForm.listUniveritys[ item ])
+            })
+        }
+    }
     
-    console.log(req.body)
-    //console.log(Object.values(req.body.courseSelected))
+    console.log(objForm.listCoursesSelected)
 
     res.render('home', {
         objForm

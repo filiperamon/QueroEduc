@@ -4,6 +4,12 @@ body {
     color: #1F2D30;
 }
 
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: rgb(6, 165, 218);
+    }
+}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */

@@ -20,5 +20,29 @@
                 <label>do seu interesse</label><br>
             </div>
         </div>
+
+        <% for(let i = 0; i < objForm.listCoursesSelected.length; i++ ) { %>
+
+            <div id="homeAddItemUny">
+                <img id="homeItemLogoUrl" src="<%- objForm.listCoursesSelected[i].university.logo_url %>">
+                <div id="homeUniItemlabels">
+                    <div id="universityName"><%- objForm.listCoursesSelected[i].university.name %></div>
+                    <div id="courseName"><%- objForm.listCoursesSelected[i].course.name %></div>
+                    <div id="lineDivisionUni"> </div>
+                    <div id="courseKind"><%- objForm.listCoursesSelected[i].course.kind %> . <%- objForm.listCoursesSelected[i].course.shift %></div>
+                    <div id="dataInicio">Inicio das aulas em <%- objForm.listCoursesSelected[i].start_date %></div>
+                    <div id="lineDivisionUni"> </div>
+                    <div id="textMensalidadeQuero">Mensalidade com o Quero Bolsa</div>
+                    <div id="fullPrice">R$ <%- objForm.listCoursesSelected[i].full_price %></div>
+                    <div id="priceDiscont">R$ <%- objForm.listCoursesSelected[i].price_with_discount %> <div id="mes">/mês</div> </div>
+                    <footer id="footerCardUni">
+                        <input type="submit" id="btnCancelar" value="Excluir"></input >
+                        <input type="submit" id="btnAddBolsa" value="Ver Oferta" disabled></input >
+                    </footer>
+                </div>
+            </div>
+
+        <% } %>
+
     </div>
 </div>

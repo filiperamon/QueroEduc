@@ -5,6 +5,11 @@
     padding-bottom: 100px;
 }
 
+#homeAddBolsa {
+    display: flex;
+    margin-top: 20px;
+}
+
 #homeAddItem {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -25,7 +30,7 @@
 
 #homeAddItem {
     text-align: left;
-    margin-left: 200px;
+    margin-left: 50px;
 }
 
 #homeSemestres {
@@ -95,6 +100,88 @@
 
 #homeFavoritas h4{
     color: rgb(78, 78, 78);
+}
+
+#homeAddItemUny {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding: 50px 50px 50px 50px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 50px;
+}
+
+#homeUniItemlabels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+}
+
+#homeItemLogoUrl {
+    align-self: center;
+    max-width: 100px;
+    max-height: 100px;
+    margin-bottom: 10px;
+}
+
+#universityName #courseKind {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#courseName {
+    font-weight: bold;
+    color: #007A8D;
+    margin-bottom: 10px;
+}
+
+#dataInicio {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+#textMensalidadeQuero {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#fullPrice {
+    text-decoration: line-through;
+    margin-bottom: 10px; 
+}
+
+#priceDiscont {
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #4CAF50;
+}
+
+#mes {
+    font-size: 10px;
+    color: black;
+    text-align: center;
+}
+
+#lineDivisionUni {
+    height: 1.5px;
+    flex: 1;
+    width: 90%;
+    background-color: #d1d1d1;
+}
+
+#footerCardUni {
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+    padding: 10px;
 }
 
 /*Home*/
