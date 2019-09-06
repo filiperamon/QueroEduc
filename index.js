@@ -26,9 +26,9 @@ let objForm = {
     ,listCoursesSelected: []
 }
 
-const init = () => {
+const init = async () => {
     
-    axios.get(urlUniversitys)
+    await axios.get(urlUniversitys)
     .then( res => {
         console.log('data ',res.data)
         objForm.listUniveritys  = res.data.filter( uni => uni.enabled ).sort();
