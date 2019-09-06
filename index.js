@@ -30,6 +30,7 @@ const init = () => {
     
     axios.get(urlUniversitys)
     .then( res => {
+        console.log('data ',res.data)
         objForm.listUniveritys  = res.data.filter( uni => uni.enabled ).sort();
         
         objForm.listCourses = objForm.listUniveritys.map( uni => uni.course )
